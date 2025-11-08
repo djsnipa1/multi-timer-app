@@ -45,7 +45,7 @@
   --sidebar-accent-foreground: oklch(0.9555 0.0555 96.1549);
   --sidebar-border: oklch(0.8255 0.0507 85.1158);
   --sidebar-ring: oklch(0.6176 0.1277 70.6739);
-  --font-sans: Genos, ui-sans-serif, sans-serif, system-ui;
+  --font-sans: Electrolize, ui-sans-serif, sans-serif, system-ui;
   --font-serif: Faustina, ui-serif, serif;
   --font-mono: IBM Plex Mono, ui-monospace, monospace;
   --radius: 0.5rem;
@@ -100,7 +100,7 @@
   --sidebar-accent-foreground: oklch(0.2768 0 0);
   --sidebar-border: oklch(0.3441 0.0066 48.5229);
   --sidebar-ring: oklch(0.8325 0.1595 82.9866);
-  --font-sans: Genos, ui-sans-serif, sans-serif, system-ui;
+  --font-sans: Electrolize, ui-sans-serif, sans-serif, system-ui;
   --font-serif: Faustina, ui-serif, serif;
   --font-mono: IBM Plex Mono, ui-monospace, monospace;
   --radius: 0.5rem;
