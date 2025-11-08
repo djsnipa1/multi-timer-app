@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Timer, AlarmSound } from '@/lib/types'
 import { parseTimeToSeconds } from '@/lib/utils'
 import { ALARM_SOUND_OPTIONS } from '@/lib/alarmSounds'
+import { Checkbox } from '@/components/ui/checkbox'
 import { Plus, Minus } from '@phosphor-icons/react'
 
 interface TimerDialogProps {
@@ -23,6 +24,7 @@ export function TimerDialog({ open, onOpenChange, onSave, timer, mode }: TimerDi
   const [minutes, setMinutes] = useState(5)
   const [seconds, setSeconds] = useState(0)
   const [alarmSound, setAlarmSound] = useState<AlarmSound>('bell')
+  const [chain, setChain] = useState(false)
 
   useEffect(() => {
     if (timer) {
@@ -32,12 +34,14 @@ export function TimerDialog({ open, onOpenChange, onSave, timer, mode }: TimerDi
       setMinutes(Math.floor((totalSeconds % 3600) / 60))
       setSeconds(totalSeconds % 60)
       setAlarmSound(timer.alarmSound)
+      setChain(timer.chain || false)
     } else {
       setName('')
       setHours(0)
       setMinutes(5)
       setSeconds(0)
       setAlarmSound('bell')
+      setChain(false)
     }
   }, [timer, open])
 
@@ -57,6 +61,7 @@ export function TimerDialog({ open, onOpenChange, onSave, timer, mode }: TimerDi
       totalDuration,
       remainingDuration: mode === 'create' ? totalDuration : timer?.remainingDuration,
       alarmSound,
+      chain,
     })
 
     onOpenChange(false)
@@ -212,6 +217,13 @@ export function TimerDialog({ open, onOpenChange, onSave, timer, mode }: TimerDi
                 ))}
               </SelectContent>
             </Select>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <Checkbox id="chain-timer" checked={chain} onCheckedChange={(checked) => setChain(Boolean(checked))} />
+            <Label htmlFor="chain-timer" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              Chain with next timer
+            </Label>
           </div>
         </div>
 

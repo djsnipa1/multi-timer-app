@@ -47,6 +47,17 @@ function App() {
                       clearInterval(intervalRefs.current.get(t.id))
                       intervalRefs.current.delete(t.id)
                     }
+
+                    if (t.chain) {
+                      const currentIndex = currentTimers.findIndex(timer => timer.id === t.id)
+                      if (currentIndex !== -1 && currentIndex < currentTimers.length - 1) {
+                        const nextTimer = currentTimers[currentIndex + 1]
+                        if (nextTimer) {
+                          currentTimers[currentIndex + 1] = { ...nextTimer, status: 'running' }
+                          toast.info(`Timer "${nextTimer.name}" started!`)
+                        }
+                      }
+                    }
                     
                     return {
                       ...t,
@@ -121,6 +132,7 @@ function App() {
         status: 'idle',
         alarmSound: timerData.alarmSound!,
         createdAt: Date.now(),
+        chain: timerData.chain || false,
       }
       
       setTimers(currentTimers => {
@@ -139,6 +151,7 @@ function App() {
                 name: timerData.name!,
                 totalDuration: timerData.totalDuration!,
                 alarmSound: timerData.alarmSound!,
+                chain: timerData.chain!,
               }
             : t
         )

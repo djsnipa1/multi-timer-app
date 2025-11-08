@@ -4,11 +4,12 @@ export type AlarmSound = 'bell' | 'chime' | 'beep' | 'digital' | 'soft'
 
 export interface Timer {
   id: string
-  name: string
+  name:string
   totalDuration: number
   remainingDuration: number
   status: TimerStatus
   alarmSound: AlarmSound
   createdAt: number
   completedAt?: number
+  chain: boolean
 }

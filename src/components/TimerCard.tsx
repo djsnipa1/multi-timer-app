@@ -1,4 +1,4 @@
-import { Play, Pause, ArrowClockwise, Trash, Pencil } from '@phosphor-icons/react'
+import { Play, Pause, ArrowClockwise, Trash, Pencil, Link } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -55,6 +55,11 @@ export function TimerCard({
       timer.status === 'running' && "ring-2 ring-accent/50 shadow-lg shadow-accent/10",
       timer.status === 'completed' && "ring-2 ring-success/50 shadow-lg shadow-success/10"
     )}>
+      {timer.chain && (
+        <div className="absolute top-2 right-2 text-muted-foreground">
+          <Link size={18} />
+        </div>
+      )}
       <div className="w-full flex items-center justify-between">
         <h3 className="font-medium text-lg truncate flex-1">{timer.name}</h3>
         {getStatusBadge()}
