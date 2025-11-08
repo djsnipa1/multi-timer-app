@@ -1,4 +1,4 @@
-import { ComponentProps } from "react"
+import React, { ComponentProps } from "react"
 import ChevronLeftIcon from "lucide-react/dist/esm/icons/chevron-left"
 import ChevronRightIcon from "lucide-react/dist/esm/icons/chevron-right"
 import MoreHorizontalIcon from "lucide-react/dist/esm/icons/more-horizontal"

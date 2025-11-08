@@ -1,7 +1,8 @@
 import { AlarmSound } from './types'
 
 export function playAlarmSound(sound: AlarmSound) {
-  const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+  const AudioContext = window.AudioContext || (window as Window & typeof globalThis).webkitAudioContext;
+  const audioContext = new AudioContext();
   
   const now = audioContext.currentTime
   

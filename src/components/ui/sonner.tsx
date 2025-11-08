@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes"
-import { CSSProperties } from "react"
+import React, { CSSProperties } from "react"
 import { Toaster as Sonner, ToasterProps } from "sonner"
 
 const Toaster = ({ ...props }: ToasterProps) => {

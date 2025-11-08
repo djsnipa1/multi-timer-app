@@ -1,3 +1,4 @@
+import React from 'react'
 import { Play, Pause, ArrowClockwise, Trash, Pencil, Link } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'

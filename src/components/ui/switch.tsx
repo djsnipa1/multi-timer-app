@@ -1,6 +1,6 @@
 "use client"
 
-import { ComponentProps } from "react"
+import React, { ComponentProps } from "react"
 import * as SwitchPrimitive from "@radix-ui/react-switch"
 
 import { cn } from "@/lib/utils"

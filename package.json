@@ -3,6 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
+    "npm.packageManager": "pnpm",
     "scripts": {
         "dev": "vite --host",
         "kill": "fuser -k 5000/tcp",
@@ -82,6 +83,7 @@
         "@vitejs/plugin-react": "^4.3.4",
         "@vitejs/plugin-react-swc": "^3.10.1",
         "eslint": "^9.28.0",
+        "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^5.2.0",
         "eslint-plugin-react-refresh": "^0.4.19",
         "globals": "^16.0.0",
