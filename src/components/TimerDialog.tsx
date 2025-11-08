@@ -25,7 +25,7 @@ export function TimerDialog({ open, onOpenChange, onSave, timer, mode }: TimerDi
   const [alarmSound, setAlarmSound] = useState<AlarmSound>('bell')
 
   useEffect(() => {
-    if (timer && mode === 'edit') {
+    if (timer) {
       setName(timer.name)
       const totalSeconds = timer.totalDuration
       setHours(Math.floor(totalSeconds / 3600))
@@ -39,7 +39,7 @@ export function TimerDialog({ open, onOpenChange, onSave, timer, mode }: TimerDi
       setSeconds(0)
       setAlarmSound('bell')
     }
-  }, [timer, mode, open])
+  }, [timer, open])
 
   const handleSave = () => {
     const totalDuration = parseTimeToSeconds(hours, minutes, seconds)

@@ -6,6 +6,7 @@ import { TimerDialog } from '@/components/TimerDialog'
 import { EmptyState } from '@/components/EmptyState'
 import { Timer } from '@/lib/types'
 import { playAlarmSound } from '@/lib/alarmSounds'
+import { numberToWord } from '@/lib/words'
 import { Plus } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 
@@ -84,8 +85,18 @@ function App() {
   }, [timers, setTimers])
 
   const handleCreateTimer = () => {
+    const nextTimerNumber = (timers?.length || 0) + 1
+    const defaultName = numberToWord(nextTimerNumber)
     setDialogMode('create')
-    setEditingTimer(undefined)
+    setEditingTimer({
+      id: '',
+      name: defaultName,
+      totalDuration: 60,
+      remainingDuration: 60,
+      status: 'idle',
+      alarmSound: 'alarm1',
+      createdAt: 0
+    })
     setDialogOpen(true)
   }
 
@@ -104,7 +115,7 @@ function App() {
     if (dialogMode === 'create') {
       const newTimer: Timer = {
         id: Date.now().toString(),
-        name: timerData.name!,
+        name: timerData.name || editingTimer!.name,
         totalDuration: timerData.totalDuration!,
         remainingDuration: timerData.totalDuration!,
         status: 'idle',
