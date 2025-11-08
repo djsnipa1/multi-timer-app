@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a "Multi Timer" web application. It allows users to create, manage, and run multiple timers simultaneously. The application is built using React, TypeScript, and Vite. It uses Tailwind CSS for styling and includes various UI components from `@radix-ui`. The state is managed using React hooks and `@github/spark/hooks` for key-value storage.
+This is a "Multi Timers" web application. It allows users to create, manage, and run multiple timers simultaneously. The application is built using React, TypeScript, and Vite. It uses Tailwind CSS for styling and includes various UI components from `@radix-ui`. The state is managed using React hooks and `@github/spark/hooks` for key-value storage.
 
 ## Building and Running
 

@@ -211,7 +211,7 @@ function App() {
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-semibold tracking-tight">Multi Timer</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Multi Timers</h1>
           {timersList.length > 0 && (
             <Button onClick={handleCreateTimer} size="sm" className="gap-2">
               <Plus size={18} weight="bold" />
