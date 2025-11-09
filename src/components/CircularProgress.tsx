@@ -43,7 +43,12 @@ export function CircularProgress({
           fill="none"
           className="text-border"
         />
-        <g strokeWidth={strokeWidth} stroke="url(#nnneon-grad)" fill="none">
+        <g 
+          strokeWidth={strokeWidth} 
+          stroke="url(#nnneon-grad)" 
+          fill="none"
+          transform={`rotate(-90 ${size / 2 + padding} ${size / 2 + padding})`}
+        >
           <circle
             r={radius}
             cx={size / 2 + padding}
