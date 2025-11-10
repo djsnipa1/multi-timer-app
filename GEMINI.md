@@ -37,3 +37,59 @@ To get the application running locally, follow these steps:
 *   **State Management:** The application state is managed using React hooks (`useState`, `useEffect`, `useRef`) and `@github/spark/hooks`'s `useKV` for persistent storage.
 *   **Types:** The project uses TypeScript for type safety. Type definitions can be found in `src/lib/types.ts`.
 *   **Code Structure:** The main application logic is in `src/App.tsx`. Reusable components are located in `src/components`.
+
+## Deployment to Cloudflare Workers
+
+To deploy this application to Cloudflare Workers, follow these steps:
+
+1.  **Install Wrangler:**
+    ```bash
+    pnpm add --save-dev wrangler@^4.0.0
+    ```
+
+2.  **Create `wrangler.toml`:**
+    Create a `wrangler.toml` file in the project root with the following content:
+    ```toml
+    name = "multi-timer-app"
+    main = "./dist/_worker.js"
+    compatibility_date = "2025-11-09"
+
+    [assets]
+    directory = "./dist"
+    binding = "ASSETS"
+    ```
+
+3.  **Create `_worker.js`:**
+    Create a `_worker.js` file in the project root with the following content:
+    ```javascript
+    export default {
+      async fetch(request, env) {
+        const url = new URL(request.url);
+        if (url.pathname.startsWith('/assets/')) {
+          return env.ASSETS.fetch(request);
+        }
+        return env.ASSETS.fetch(new Request(new URL('/index.html', request.url), request));
+      },
+    };
+    ```
+
+4.  **Create `.assetsignore`:**
+    Create a `.assetsignore` file in the project root with the following content:
+    ```
+    _worker.js
+    ```
+
+5.  **Update `package.json` scripts:**
+    Add the following scripts to your `package.json`:
+    ```json
+    "copy-worker": "copy _worker.js dist\_worker.js",
+    "copy-assets-ignore": "copy .assetsignore dist\.assetsignore",
+    "deploy": "pnpm run build && pnpm run copy-worker && pnpm run copy-assets-ignore && wrangler deploy"
+    ```
+
+6.  **Deploy:**
+    Run the deploy command:
+    ```bash
+    pnpm run deploy
+    ```
+    You will need to be logged in to Cloudflare via `wrangler login` or have the `CLOUDFLARE_API_TOKEN` environment variable set.
